@@ -1,13 +1,11 @@
-// Copyright 2013 The Flutter Authors. All rights reserved.
+// Copyright 2013 The Flutter Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
 import 'package:google_identity_services_web/id.dart' as id;
 
 /// Converts user-facing `GisButtonConfiguration` into the JS-Interop `id.GsiButtonConfiguration`.
-id.GsiButtonConfiguration? convertButtonConfiguration(
-  GSIButtonConfiguration? config,
-) {
+id.GsiButtonConfiguration? convertButtonConfiguration(GSIButtonConfiguration? config) {
   if (config == null) {
     return null;
   }
@@ -90,11 +88,10 @@ enum GSIButtonType {
   standard,
 
   /// An icon button without text.
-  icon;
+  icon,
 }
 
-const Map<GSIButtonType, id.ButtonType> _idType =
-    <GSIButtonType, id.ButtonType>{
+const Map<GSIButtonType, id.ButtonType> _idType = <GSIButtonType, id.ButtonType>{
   GSIButtonType.icon: id.ButtonType.icon,
   GSIButtonType.standard: id.ButtonType.standard,
 };
@@ -111,11 +108,10 @@ enum GSIButtonTheme {
   filledBlue,
 
   /// A black-filled button theme.
-  filledBlack;
+  filledBlack,
 }
 
-const Map<GSIButtonTheme, id.ButtonTheme> _idTheme =
-    <GSIButtonTheme, id.ButtonTheme>{
+const Map<GSIButtonTheme, id.ButtonTheme> _idTheme = <GSIButtonTheme, id.ButtonTheme>{
   GSIButtonTheme.outline: id.ButtonTheme.outline,
   GSIButtonTheme.filledBlue: id.ButtonTheme.filled_blue,
   GSIButtonTheme.filledBlack: id.ButtonTheme.filled_black,
@@ -133,11 +129,10 @@ enum GSIButtonSize {
   medium,
 
   /// A small button (about 20px tall).
-  small;
+  small,
 }
 
-const Map<GSIButtonSize, id.ButtonSize> _idSize =
-    <GSIButtonSize, id.ButtonSize>{
+const Map<GSIButtonSize, id.ButtonSize> _idSize = <GSIButtonSize, id.ButtonSize>{
   GSIButtonSize.large: id.ButtonSize.large,
   GSIButtonSize.medium: id.ButtonSize.medium,
   GSIButtonSize.small: id.ButtonSize.small,
@@ -158,11 +153,10 @@ enum GSIButtonText {
   continueWith,
 
   /// The button text is "Sign in".
-  signin;
+  signin,
 }
 
-const Map<GSIButtonText, id.ButtonText> _idText =
-    <GSIButtonText, id.ButtonText>{
+const Map<GSIButtonText, id.ButtonText> _idText = <GSIButtonText, id.ButtonText>{
   GSIButtonText.signinWith: id.ButtonText.signin_with,
   GSIButtonText.signupWith: id.ButtonText.signup_with,
   GSIButtonText.continueWith: id.ButtonText.continue_with,
@@ -178,12 +172,11 @@ enum GSIButtonShape {
   rectangular,
 
   /// The circle-shaped button.
-  pill;
+  pill,
   // Does this need circle and square?
 }
 
-const Map<GSIButtonShape, id.ButtonShape> _idShape =
-    <GSIButtonShape, id.ButtonShape>{
+const Map<GSIButtonShape, id.ButtonShape> _idShape = <GSIButtonShape, id.ButtonShape>{
   GSIButtonShape.rectangular: id.ButtonShape.rectangular,
   GSIButtonShape.pill: id.ButtonShape.pill,
 };
@@ -197,11 +190,11 @@ enum GSIButtonLogoAlignment {
   left,
 
   /// Center-aligns the Google logo.
-  center;
+  center,
 }
 
 const Map<GSIButtonLogoAlignment, id.ButtonLogoAlignment> _idLogoAlignment =
     <GSIButtonLogoAlignment, id.ButtonLogoAlignment>{
-  GSIButtonLogoAlignment.left: id.ButtonLogoAlignment.left,
-  GSIButtonLogoAlignment.center: id.ButtonLogoAlignment.center,
-};
+      GSIButtonLogoAlignment.left: id.ButtonLogoAlignment.left,
+      GSIButtonLogoAlignment.center: id.ButtonLogoAlignment.center,
+    };

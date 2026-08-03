@@ -1,4 +1,4 @@
-// Copyright 2013 The Flutter Authors. All rights reserved.
+// Copyright 2013 The Flutter Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 import 'dart:js_interop';
@@ -61,7 +61,7 @@ class _FlexHtmlElementView extends State<FlexHtmlElementView> {
           'Resizing: ',
           widget.viewType,
           size.width,
-          size.height
+          size.height,
         ].join(' ');
         web.console.debug(log.toJS);
       }
@@ -72,10 +72,7 @@ class _FlexHtmlElementView extends State<FlexHtmlElementView> {
   }
 
   /// The function called whenever an observed resize occurs.
-  void _onResizeEntries(
-    JSArray<web.ResizeObserverEntry> resizes,
-    web.ResizeObserver observer,
-  ) {
+  void _onResizeEntries(JSArray<web.ResizeObserverEntry> resizes, web.ResizeObserver observer) {
     final web.DOMRectReadOnly rect = resizes.toDart.last.contentRect;
     if (rect.width > 0 && rect.height > 0) {
       // TODO(dit): Remove the following ignore once the repo leaves web:0.5.1 behind. https://github.com/flutter/flutter/issues/152657
@@ -88,10 +85,7 @@ class _FlexHtmlElementView extends State<FlexHtmlElementView> {
   ///
   /// When mutations are received, this function attaches a Resize Observer to
   /// the first child of the mutation, which will drive
-  void _onMutationRecords(
-    JSArray<web.MutationRecord> mutations,
-    web.MutationObserver observer,
-  ) {
+  void _onMutationRecords(JSArray<web.MutationRecord> mutations, web.MutationObserver observer) {
     for (final web.MutationRecord mutation in mutations.toDart) {
       if (mutation.addedNodes.length > 0) {
         final web.Element? element = _locateSizeProvider(mutation.addedNodes);
@@ -110,12 +104,7 @@ class _FlexHtmlElementView extends State<FlexHtmlElementView> {
   void _registerListeners(web.Element root) {
     _mutationObserver = web.MutationObserver(_onMutationRecords.toJS);
     // Monitor the size of the child element, whenever it's created...
-    _mutationObserver!.observe(
-      root,
-      web.MutationObserverInit(
-        childList: true,
-      ),
-    );
+    _mutationObserver!.observe(root, web.MutationObserverInit(childList: true));
   }
 
   @override
@@ -123,16 +112,16 @@ class _FlexHtmlElementView extends State<FlexHtmlElementView> {
     return SizedBox.fromSize(
       size: _lastReportedSize ?? widget.initialSize ?? const Size(1, 1),
       child: HtmlElementView(
-          viewType: widget.viewType,
-          onPlatformViewCreated: (int viewId) {
-            final ElementCreatedCallback? callback = widget.onElementCreated;
-            final web.Element root =
-                ui_web.platformViewRegistry.getViewById(viewId) as web.Element;
-            _registerListeners(root);
-            if (callback != null) {
-              callback(root);
-            }
-          }),
+        viewType: widget.viewType,
+        onPlatformViewCreated: (int viewId) {
+          final ElementCreatedCallback? callback = widget.onElementCreated;
+          final root = ui_web.platformViewRegistry.getViewById(viewId) as web.Element;
+          _registerListeners(root);
+          if (callback != null) {
+            callback(root);
+          }
+        },
+      ),
     );
   }
 }
