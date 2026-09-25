@@ -76,7 +76,7 @@ AuthenticationEvent? gisResponsesToAuthenticationEvent(CredentialResponse? crede
     'The CredentialResponse cannot be null and have a payload.',
   );
 
-  return  AuthenticationEventSignIn(
+  return AuthenticationEventSignIn(
     user: GoogleSignInUserData(
       email: payload['email']! as String,
       id: payload['sub']! as String,
