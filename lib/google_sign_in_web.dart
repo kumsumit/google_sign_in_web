@@ -43,13 +43,12 @@ class GoogleSignInPlugin extends GoogleSignInPlatform {
   /// background.
   ///
   /// For tests, the plugin can skip its loading process with [debugOverrideLoader],
-  /// and the implementation of the underlying GIS SDK client through [debugOverrideGisSdkClient].
+  /// and the implementation of the underlying GIS SDK client through [_debugOverrideGisSdkClient].
   GoogleSignInPlugin({
     @visibleForTesting bool debugOverrideLoader = false,
-    @visibleForTesting GisSdkClient? debugOverrideGisSdkClient,
+    @visibleForTesting this._debugOverrideGisSdkClient,
     @visibleForTesting StreamController<AuthenticationEvent>? debugAuthenticationController,
-  }) : _debugOverrideGisSdkClient = debugOverrideGisSdkClient,
-       _authenticationController =
+  }) : _authenticationController =
            debugAuthenticationController ?? StreamController<AuthenticationEvent>.broadcast() {
     autoDetectedClientId = web.document
         .querySelector(clientIdMetaSelector)
