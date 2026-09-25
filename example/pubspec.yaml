@@ -2,27 +2,29 @@ name: google_sign_in_web_integration_tests
 publish_to: none
 
 environment:
-  sdk: ^3.10.0
-  flutter: ">=3.38.0"
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
 
 dependencies:
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.9
   flutter:
     sdk: flutter
-  google_identity_services_web: ^0.3.1
-  google_sign_in_platform_interface: ^3.1.0
+  google_identity_services_web: 
+    git: https://github.com/kumsumit/google_identity_services_web.git
+  google_sign_in_platform_interface: 
+    git: https://github.com/kumsumit/google_sign_in_platform_interface.git
   google_sign_in_web:
     path: ../
 
 dev_dependencies:
-  build_runner: ^2.1.1
+  build_runner: ^2.16.1
   flutter_test:
     sdk: flutter
-  http: ">=0.13.0 <2.0.0"
+  http: ">=1.6.0 <2.0.0"
   integration_test:
     sdk: flutter
-  mockito: ^5.4.4
-  web: ^1.0.0
+  mockito: ^5.8.1
+  web: ^1.1.1
 
 flutter:
   uses-material-design: true
